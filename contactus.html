@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookSphere</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Fixed Navbar */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: 0.3s ease-in-out;
+        }
+        .ho:hover{
+            border:2px solid #6A0DAD;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6A0DAD !important; /* Purple */
+        }
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            color: #6A0DAD !important;
+            margin-right: 15px;
+            transition: 0.3s ease-in-out;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #9B30FF !important; /* Lighter Purple */
+        }
+        /* Search Box */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 30px;
+            padding: 5px 10px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: 180px;
+            background: transparent;
+        }
+        .search-box button {
+            background: #6A0DAD;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: white;
+        }
+        .search-box button:hover {
+            background: #9B30FF;
+        }
+        /* Cart Button */
+        .cart-btn {
+            position: relative;
+            color: #6A0DAD;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+        .cart-btn:hover {
+            color: #9B30FF;
+        }
+        .cart-btn .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+        /* Login & Signup Buttons */
+        .auth-btn {
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s ease-in-out;
+            border: 2px solid #6A0DAD;
+        }
+        .login-btn {
+            background: transparent;
+            color: #6A0DAD;
+        }
+        .login-btn:hover {
+            background: #6A0DAD;
+            color: white;
+        }
+        .signup-btn {
+            background: #6A0DAD;
+            color: white;
+            border: none;
+        }
+        .signup-btn:hover {
+            background: #9B30FF;
+        }
+     
+ 
+        #btn{
+            position: relative;
+            color: #6A0DAD;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+        body{
+        background-image: linear-gradient(45deg, #864ef2, #6755F4);
+    }
+    .uf-contact-form-01 {
+        max-width: 900px;
+    }
+
+    .contact-details {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
+        .contact-details i {
+            font-size: 2rem;
+            color: #6A0DAD;
+            margin-bottom: 10px;
+        }
+        .contact-details p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .contact-details a {
+            color: #6A0DAD;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        .contact-details a:hover {
+            color: #9B30FF;
+        }
+        footer {
+            background-color: rgb(25, 22, 22);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .footer-content, .footer-links, .footer-social {
+            text-align: center;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links ul li {
+            margin: 5px 0;
+        }
+        
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: #9B30FF; /* Lighter Purple */
+        }
+        
+        .footer-social .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        
+        .footer-social .social-icons a:hover {
+            color: #9B30FF;
+        }
+        
+        .footer-bottom {
+            margin-top: 10px;
+            border-top: 1px solid gray;
+            padding-top: 10px;
+        }
+        
+        
+
+ 
+
+
+    @media (min-width: 576px){
+        .uf-contact-form-01 {
+        min-height: 100vh;
+        align-content: center;
+    } 
+    }
+    .uf-img-contact-form-01{
+        max-width: 100%;
+        animation: uf-animation 4s ease-in-out 1s infinite alternate;
+        position: relative;
+    }
+    .uf-ct-01-text-primary{
+        color: #864ef2;
+    }
+    .uf-ct-01-btn-primary{
+        background-color: #864ef2;
+        color: #fff;
+    }
+    .uf-ct-01-btn-primary:hover{
+        background-color: #641eec;
+        color: #fff;
+    }
+
+    @keyframes uf-animation {
+    0%   {top:0px;}
+    50%  {top:-30px;}
+    100% {top:0px;}
+    }
+    .form-control:focus {
+        border-color: #a979ff;
+        box-shadow: 0 0 0 .25rem rgb(103 58 183 / 21%);
+    }
+
+        </style>
+</head>
+<body>
+
+   
+  
+    <nav class="navbar navbar-expand-lg navbar-light">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BOOKSPHERE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('home')}} ">Home</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('about')}} ">About</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('services')}}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href=" {{url_for('contactus')}}">Contact</a></li>
+                </ul>
+                <div class="search-box me-3">
+                    <input type="text" placeholder="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    
+                         <i class="fa-solid fa-user" id="btn"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                       
+                        <a href="/register" class="btn btn-primary btn-auth"><i class="fas fa-user-plus"></i> Register</a>
+                        <a href="/login" class="btn btn-success btn-auth"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </ul>
+                </div>
+                <a href="#" class="cart-btn" >
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span class="cart-badge">3</span>
+                </a>
+               
+            </div>
+        </div>
+       
+
+    </nav>
+    
+     
+    <section class="uf-contact-form-01 mx-auto">
+        <div class="container">
+            <div class="row justify-content-center bg-white rounded-4 shadow py-5 gx-5 px-lg-5">
+                <div class="col-md-6 text-center">
+                    <h2 class="uf-ct-01-text-primary text-uppercase fw-bold">Contact Us</h2>
+                    <p>Or reach out manually to <a href="mailto:uifresh.net@gmail.com" class="text-decoration-none">booksphere@gmail.com</a></p>
+                    <img src="https://img.freepik.com/premium-photo/3d-yellow-paper-airplane-flies-through-purple-sky-with-fluffy-clouds_1008419-10367.jpg" alt="" class="uf-img-contact-form-01 pt-4 d-md-block d-none">
+                </div>
+                <div class="col-md-6">
+                    <form>
+  <div class="mb-3">
+    <label for="uf-imail" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="uf-imail" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text uf-ct-01-text-primary">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="uf-iname" class="form-label">Your name</label>
+    <input type="text" class="form-control" id="uf-iname">
+  </div>
+  <div class="mb-3">
+  <label for="uf-itextarea" class="form-label">Your message</label>
+  <textarea class="form-control" id="uf-itextarea" rows="3"></textarea>
+</div>
+  <button type="submit" class="btn btn-lg uf-ct-01-btn-primary">Send Message</button>
+</form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Details -->
+    
+
+ 
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <h3>Online Book Store</h3>
+            <p>Your go-to destination for discovering the best books across genres.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Online Book Store. All Rights Reserved.</p>
+    </div>
+</footer>
+ 
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+ 
+</body>
+</html>
