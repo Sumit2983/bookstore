@@ -1,0 +1,89 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .container h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        form p {
+            margin: 15px 0;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .btn {
+            background: #ff7eb3;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #ff4e8a;
+        }
+        .link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #fff;
+        }
+        .link a {
+            color: #ff7eb3;
+            text-decoration: none;
+        }
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <p>{{ form.username.label }} {{ form.username() }}</p>
+            <p>{{ form.email.label }} {{ form.email() }}</p>
+            <p>{{ form.password.label }} {{ form.password() }}</p>
+            <p>{{ form.confirm_password.label }} {{ form.confirm_password() }}</p>
+            <p><button type="submit" class="btn">{{ form.submit.label }}</button></p>
+        </form>
+        <p class="link">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+</body>
+</html>
