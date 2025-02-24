@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKSPHERE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: 0.3s ease-in-out;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6A0DAD !important;
+        }
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            color: #6A0DAD !important;
+            margin-right: 15px;
+            transition: 0.3s ease-in-out;
+        }
+        .navbar-nav .nav-link:hover {
+            color:  #6A0DAD !important;
+        }
+        .ho:hover{
+            border: #6a0dad;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 30px;
+            padding: 5px 10px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: 180px;
+            background: transparent;
+        }
+        .search-box button {
+            background: #6A0DAD;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: white;
+        }
+        .search-box button:hover {
+            background: #9B30FF;
+        }
+        .cart-btn {
+            position: relative;
+            color: #6A0DAD;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+        .cart-btn:hover {
+            color: #9B30FF;
+        }
+        .cart-btn .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+        #btn{
+            position: relative;
+            color: #6A0DAD;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+       
+
+        body {
+            font-family: Arial, sans-serif;
+            /* background-color: black; */
+            padding-top: 70px;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #fff;
+        }
+        .container {
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 100px;
+            margin-top: 155px;
+            }
+        .text-content {
+            max-width: 50%;
+            margin-left: -50px;
+            
+
+        }
+        .text-content h2, .text-content h1 {
+            color:#6a0dad;
+            font-weight: 700;
+        }
+        .text-content h1 {
+            font-size: 42px;
+        }
+        .text-content p {
+            color: #000;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        .ho:hover{
+            border: 2px solid #9B30FF;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background:#6a0dad;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #ded8e5;
+        }
+        .image-content img {
+            width: 620px;
+            border-radius: 15px;
+        }
+        
+        .container2{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            margin-left: -10px;
+        }
+        .book-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    width: 270px;
+    height: 300px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 
+                0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Better UI */
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25), 
+                0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+        .book-card img {
+            width: 100%;
+        
+            height: 200px;
+            border-radius: 5px;
+        }
+        .book-title {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .book-author {
+            font-size: 14px;
+            color: #a5a5a5;
+        }
+        .book-price {
+            font-size: 16px;
+            color: purple;
+            margin-top: 5px;
+        }
+        .textt{
+            margin-left: 50px;
+            font-weight: 700;
+            margin-bottom: -30px;
+        }
+        .main {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+            margin-top: -60px;
+        }
+
+        .container3{
+            display: flex;
+            gap: 70px;
+            max-width: 900px;
+            align-items: center;
+        }
+
+        .text-section {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .text-section h2 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .text-section p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .feature-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .feature-box img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+            transition: filter 0.3s ease-in-out;
+            
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            font-weight: bold;
+            
+        }
+
+        /* Hover Effect */
+        .feature-box:hover {
+            background: purple;
+            color: white;
+        }
+
+        .feature-box:hover img {
+            filter: invert(1);
+        }
+        .main3{
+            font-family: Arial, sans-serif;
+            margin-top: -330px;
+            padding: 0;
+            display: flex;
+            gap: 200px;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+
+        .container4{
+            display: flex;
+            max-width: 1000px;
+            align-items: center;
+            gap: 200px;
+        }
+
+        .images {
+            display: flex;
+            gap: 10px;
+        }
+
+        .images img {
+            width: 230px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .text-section {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .text-section h2 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .text-section p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+            background-color: purple;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #6a0dad;
+        }
+        .main4{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .container5{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .card {
+
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            height: 360px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 12px;
+            border: 4px solid white;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin: 10px 0 5px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .card h4 {
+            color: #777;
+            font-size: 16px;
+            margin: 0 0 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .card-footer {
+            background: purple;
+            padding: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .icons a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .icons a:hover {
+            color: #d8b6ff;
+        }
+        footer {
+        background-color:rgb(25, 22, 22);
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .footer-content, .footer-links, .footer-social {
+        flex: 1;
+        min-width: 250px;
+        margin: 20px;
+    }
+
+    .footer-content h3, .footer-links h4, .footer-social h4 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links ul li {
+        margin: 8px 0;
+    }
+
+    .footer-links ul li a {
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .footer-links ul li a:hover {
+        color: #d8b6ff;
+    }
+
+    .social-icons a {
+        color: white;
+        font-size: 22px;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #d8b6ff;
+    }
+
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 14px;
+        border-top: 1px solid #ffffff50;
+        padding-top: 10px;
+    }
+     
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .text-content {
+            margin-bottom: 20px;
+        }
+
+        .navbar-nav {
+            text-align: center;
+        }
+
+        .search-box {
+            margin: 10px auto;
+        }
+
+        .book-card {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .text-content h1 {
+            font-size: 2rem;
+        }
+
+        .text-content p {
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 8px 16px;
+        }
+    }
+    @media (max-width: 576px) {
+        .navbar-brand {
+            font-size: 1.5rem; /* Smaller logo */
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem; /* Smaller nav links */
+        }
+
+        .search-box {
+            width: 100%; /* Full-width search box */
+            margin: 10px 0;
+        }
+
+        .search-box input {
+            width: 100%; /* Full-width input */
+        }
+
+        .container {
+            flex-direction: column; /* Stack text and image */
+            text-align: center;
+            margin-top: 80px; /* Adjust top margin */
+        }
+
+        .text-content h1 {
+            font-size: 2rem; /* Smaller heading */
+        }
+
+        .text-content p {
+            font-size: 1rem; /* Smaller paragraph */
+        }
+
+        .btn {
+            padding: 8px 16px; /* Smaller button */
+        }
+
+        .book-card {
+            width: 100%; /* Full-width cards */
+            max-width: 300px;
+        }
+    }
+            
+    </style>
+</head>
+<body>
+   
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BOOKSPHERE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('home')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('about')}}">About</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('services')}}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('contactus')}}">Contact</a></li>
+                </ul>
+                <div class="search-box me-3">
+                    <input type="text" placeholder="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    
+                         <i class="fa-solid fa-user" id="btn"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                       
+                        <a href="/register" class="btn btn-primary btn-auth"><i class="fas fa-user-plus"></i> Register</a>
+                        <a href="/login" class="btn btn-success btn-auth"><i class="fas fa-sign-in-alt"></i> Login</a>
+           
+                    </ul>
+                </div>
+                <a href="#" class="cart-btn" >
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span class="cart-badge">3</span>
+                </a>
+               
+            </div>
+        </div>
+       
+
+    </nav>
+    
+     
+
+      
+    
+    
+   
+ 
+   
+        <div class="container">
+            
+             <!-- Flash Messages -->
+       
+            <div class="text-content">
+                <h2 style="font-size: 55px;">BookSphere</h2>
+                <h1 style="color: #000;">For All Your <br>Reading Needs</h1>
+                <p>Uncover captivating stories, enriching knowledge, and endless <br>inspiration in our curated collection of books</p>
+                <a href="{{url_for('bookstore')}}" class="btn">EXPLORE books</a>
+            </div>
+            <div class="image-content">
+                <img src="https://bbaprep.in/images/1625905268.jpeg" alt="Books and Reading" height="450px" width="810px">
+            </div>
+        </div>
+
+<br>
+<div class="container mt-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="w-50 mx-auto"> <!-- Centered and 50% width -->
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" id="flash-message">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<br>
+
+<div>
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://m.media-amazon.com/images/G/31/img21/Books/SeptBB2024/1500x300_UPSC._CB563198849_.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://m.media-amazon.com/images/G/31/img21/Books/DecBB2024/1500x300_Children-Books-if-you-love-animals._CB539272073_.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://m.media-amazon.com/images/G/31/img21/Books/SeptBB2024/1500x300_olympiad._CB563198849_.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</div>
+<br><br>
+
+<H3 class="textt">Recentely Added Books</H3>
+<div class="container2">
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/71xmn3Ary-L._AC_UY327_FMwebp_QL65_.jpg" alt="How to Win Friends">
+        <div class="book-title">he Boy with the Bookstore</div>
+        <div class="book-author">by Dale Carnegie</div>
+        <div class="book-price">₹233</div>
+        
+        
+    </div>
+
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/71tbalAHYCL.jpg" alt="Ikigai">
+        <div class="book-title">Ikigai</div>
+        <div class="book-author">by Francesc Miralles, Hector Garcia</div>
+        <div class="book-price">₹392</div>
+    </div>
+
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/51byA9mA40L._AC_UY327_FMwebp_QL65_.jpg" alt="The 48 Laws of Power">
+        <div class="book-title">The 48 Laws Of Power</div>
+        <div class="book-author">by Robert Greene</div>
+        <div class="book-price">₹683</div>
+    </div>
+
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/81DuV8X918L._AC_UY327_FMwebp_QL65_.jpg" alt="Tongue In Cheek">
+        <div class="book-title">The Door-to-Door Bookstore</div>
+        <div class="book-author">by Khyrunnisa A.</div>
+        <div class="book-price">₹1008</div>
+    </div>
+
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/81lulYRwZpL._AC_UY327_FMwebp_QL65_.jpg" alt="Tongue In Cheek">
+        <div class="book-title">The In-between Bookstore</div>
+        <div class="book-author">by Khyrunnisa A.</div>
+        <div class="book-price">₹1008</div>
+    </div>
+</div><br><br>
+<div class="container2">
+    <div class="book-card">
+        <img src=" https://m.media-amazon.com/images/I/51ZQsqdZx-S._SX342_SY445_.jpg" alt="Ikigai">
+        <div class="book-title">Timeless Stories</div>
+        <div class="book-author">Wonder House Books</div>
+        <div class="book-price">₹202</div>
+    </div>
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/512jPTpPClS._SX342_SY445_.jpg" alt="Ikigai">
+        <div class="book-title">Timeless Stories</div>
+        <div class="book-author">Hardcover </div>
+        <div class="book-price">₹112</div>
+    </div>
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/41bLuEzvTkL._SX342_SY445_.jpg" alt="Ikigai">
+        <div class="book-title">Illustrated stories </div>
+        <div class="book-author"> Shubha Vilas</div>
+        <div class="book-price">₹152</div>
+    </div>
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/716sr-OKdIL._SL1200_.jpg" alt="Ikigai">
+        <div class="book-title">Stories From The Jatakas</div>
+        <div class="book-author">Anant Pai</div>
+        <div class="book-price">₹445</div>
+    </div>
+    <div class="book-card">
+        <img src="https://m.media-amazon.com/images/I/81uuRw6SbWL._SL1500_.jpg" alt="Ikigai">
+        <div class="book-title">The Hidden Hindu Boxset</div>
+        <div class="book-author">Akshat Gupta </div>
+        <div class="book-price">₹492</div>
+    </div>
+</div>
+
+<div class="main">
+<div class="container3">
+    <div class="text-section">
+        <h2>COLLABORATION'S</h2>
+        <p>Our mission is to provide book lovers with a seamless and enjoyable shopping experience. 
+            Whether you're a student, an avid reader, or a book enthusiast, we have something for everyone.</p>
+    </div>
+    <div class="features">
+        <div class="feature-box">
+            <img src="https://img.icons8.com/ios-filled/50/000000/handshake.png" alt="Wide Book Selection">
+            <p>WIDE BOOK SELECTION</p>
+        </div>
+        <div class="feature-box">
+            <img src="https://img.icons8.com/ios-filled/50/000000/settings.png" alt="Secure Ordering">
+            <p>SECURE ORDERING</p>
+        </div>
+        <div class="feature-box">
+            <img src="https://img.icons8.com/ios-filled/50/000000/briefcase.png" alt="Fast Delivery">
+            <p>FAST DELIVERY</p>
+        </div>
+        <div class="feature-box">
+            <img src="https://img.icons8.com/ios-filled/50/000000/clock.png" alt="Personalized Recommendations">
+            <p>PERSONALIZED RECOMMENDATIONS</p>
+        </div>
+    </div>
+</div>
+</div>
+<div class="main3">
+<div class="container4">
+    <div class="images">
+        <img src="https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg" alt="Student Sleeping" >
+        <img src="https://images.pexels.com/photos/4144225/pexels-photo-4144225.jpeg" alt="Writing Notes">
+    </div>
+    <div class="text-section">
+        <h2>EXPLORE OUR GALLERY</h2>
+        <p>Embark on a visual journey through our online gallery, where you can catch glimpses of our featured books, bestsellers, and special literary events.</p>
+        <a href="#" class="btn">Contact Us</a>
+    </div>
+</div>
+</div>
+
+<h2 style="text-align: center;margin-top: -60px;">HEAR FROM OUR CUSTOMERS</h2>
+<p style="text-align: center;">Discover what our valued customers have to say about their experience with Online Book Store.</p>
+
+<div class="main4">
+<div class="container5">
+    <div class="card">
+        <div class="card-content">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Alexandra">
+            <h3>ALEXANDRA TURNER</h3>
+            <h4>Book Enthusiast</h4>
+        </div>
+        <div class="card-footer">
+            <p>I love the diverse range of books available at Online Book Store. The ordering process was smooth, and I received my books in excellent condition.</p>
+            <div class="icons">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Michael">
+            <h3>MICHAEL REYNOLDS</h3>
+            <h4>Avid Reader</h4>
+        </div>
+        <div class="card-footer">
+            <p>As an avid reader, I appreciate the personalized recommendations. It makes exploring new titles a delightful experience.</p>
+            <div class="icons">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Sophia">
+            <h3>SOPHIA MARTINEZ</h3>
+            <h4>Book Club Member</h4>
+        </div>
+        <div class="card-footer">
+            <p>Being a part of the book club community has enriched my reading journey. The exclusive discussions add a unique touch to my literary pursuits.</p>
+            <div class="icons">
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <h3>Online Book Store</h3>
+            <p>Your go-to destination for discovering the best books across genres.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Online Book Store. All Rights Reserved.</p>
+    </div>
+</footer>
+
+ 
+<script>
+    // Automatically hide the flash message after 1 second (1000ms)
+    setTimeout(function() {
+        let flashMessage = document.getElementById("flash-message");
+        if (flashMessage) {
+            flashMessage.style.transition = "opacity 0.5s ease"; // Fade out effect
+            flashMessage.style.opacity = "0"; 
+            setTimeout(() => flashMessage.style.display = "none", 500); // Hide completely after fade
+        }
+    }, 1000);
+</script>
+<script>
+    function searchFunction() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let items = document.querySelectorAll("#itemsList li");
+
+        items.forEach(item => {
+            let text = item.textContent.toLowerCase();
+            item.style.display = text.includes(input) ? "block" : "none";
+        });
+    }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
