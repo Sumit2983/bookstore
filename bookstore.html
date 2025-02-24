@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style>
+        *{
+            padding: 0;margin: 0;box-sizing: border-box;
+        }
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: 0.3s ease-in-out;
+        }
+        .ho:hover{
+            border:2px solid #6A0DAD;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6A0DAD !important; /* Purple */
+        }
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            color: #6A0DAD !important;
+            margin-right: 15px;
+            transition: 0.3s ease-in-out;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #9B30FF !important; /* Lighter Purple */
+        }
+        /* Search Box */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 30px;
+            padding: 5px 10px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            width: 180px;
+            background: transparent;
+        }
+        .search-box button {
+            background: #6A0DAD;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: white;
+        }
+        .search-box button:hover {
+            background: #9B30FF;
+        }
+        /* Cart Button */
+        .cart-btn {
+            position: relative;
+            color: #6A0DAD;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+        .cart-btn:hover {
+            color: #9B30FF;
+        }
+        .cart-btn .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+        /* Login & Signup Buttons */
+        .auth-btn {
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s ease-in-out;
+            border: 2px solid #6A0DAD;
+        }
+        .login-btn {
+            background: transparent;
+            color: #6A0DAD;
+        }
+        .login-btn:hover {
+            background: #6A0DAD;
+            color: white;
+        }
+        .signup-btn {
+            background: #6A0DAD;
+            color: white;
+            border: none;
+        }
+        .signup-btn:hover {
+            background: #9B30FF;
+        }
+     
+ 
+        #btn{
+            position: relative;
+            color: #6A0DAD;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            transition: 0.3s ease-in-out;
+        }
+        
+    
+    .uf-contact-form-01 {
+        max-width: 900px;
+    }
+
+    .contact-details {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
+        .contact-details i {
+            font-size: 2rem;
+            color: #6A0DAD;
+            margin-bottom: 10px;
+        }
+        .contact-details p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .contact-details a {
+            color: #6A0DAD;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        .contact-details a:hover {
+            color: #9B30FF;
+        }
+         
+    .first_heading{
+        background-color: #6a0dad;
+        padding: 20px;
+        
+        
+    }
+ .book_store{
+    position: relative;
+    top: 10px;
+    color: white;
+    font-weight: 900;
+    
+
+    
+ }
+        .card-img-top {
+            height: 200px;
+            object-fit:contain;
+            background-color: #fff;
+        }
+        .card {
+            font-size: 14px;
+        }
+        .card-title {
+            font-size: 16px;
+        }
+        .card-text {
+            font-size: 13px;
+        }
+        .card {
+            font-size: 14px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+        .card:hover {
+            transform: scale(1.05); /* Scale up the card */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow */
+        }
+        span{
+            font-size: 14px;
+            color: green;
+        }
+        .star-rating{
+            color: gold;
+        } 
+    
+        
+        footer {
+            background-color:rgb(33, 29, 29);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+    
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+    
+        .footer-content, .footer-links, .footer-social {
+            flex: 1;
+            min-width: 250px;
+            margin: 20px;
+        }
+    
+        .footer-content h3, .footer-links h4, .footer-social h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+    
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .footer-links ul li {
+            margin: 8px 0;
+        }
+    
+        .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+    
+        .footer-links ul li a:hover {
+            color: #d8b6ff;
+        }
+    
+        .social-icons a {
+            color: white;
+            font-size: 22px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+    
+        .social-icons a:hover {
+            color: #d8b6ff;
+        }
+    
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            border-top: 1px solid #ffffff50;
+            padding-top: 10px;
+        }
+        
+    </style>
+</head>
+<body> 
+    <nav class="navbar navbar-expand-lg navbar-light">
+        
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BOOKSPHERE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('home')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('about')}}">About</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('services')}}">Services</a></li>
+                    <li class="nav-item"><a class="nav-link ho" href="{{url_for('contactus')}}">Contact</a></li>
+                </ul>
+                <div class="search-box me-3">
+                    <input type="text" placeholder="Search">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    
+                         <i class="fa-solid fa-user" id="btn"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                       
+                        <a href="/register" class="btn btn-primary btn-auth"><i class="fas fa-user-plus"></i> Register</a>
+                        <a href="/login" class="btn btn-success btn-auth"><i class="fas fa-sign-in-alt"></i> Login</a>
+           
+                    </ul>
+                </div>
+                <a href="#" class="cart-btn" >
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span class="cart-badge">3</span>
+                </a>
+               
+            </div>
+        </div>
+       
+
+    </nav>
+    
+     
+<div>
+    <div class="container mt-5">
+        
+        <br><br>
+        <div class="row row-cols-1 row-cols-md-4 g-3">
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/41iv2PNaPlL._SY445_SX342_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">The Very Best Of Fyodor Dostoyevsky: Short Stories</h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        
+                        <h4>₹124
+                        </h4> <p><del>₹399</del><span>     (27% off)</span>
+                        </p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 2 days ago</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/410gxYUz9KL._SX342_SY445_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"> Crime and Punishment ( Unabridged Classics)</h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹212</h3>
+                        <p><del>₹295</del> <span>  (20%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/71QMFe4k8LL._SL1500_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">The Originals Classic by Fyodor Dostoevsky - Unabridged Classics</h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹184</h3>
+                        <p><del>₹400</del> <span>  (24%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/41OveF8lY5L._SY445_SX342_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">The Idiot ( Paperback – 5 March 2023)</h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹280</h3>
+                        <p><del>₹395</del> <span>  (29%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+
+            <br><br><br>
+            
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/81cvMup8fFL._SL1500_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Thirteen Months In The Himalayas : Chronicles of a Monk's Sadhana </h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹324</h3>
+                        <p><del>₹499</del> <span>  (39%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/51ewXeUdkvL._SY445_SX342_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Karma: A Yogis Guide to Crafting Your Destiny </h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹211</h3>
+                        <p><del>₹399</del> <span>  (40%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/A1GGFeRsnDL._SY445_SX342_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">The Power of Your Subconcious Mind | Unlock Limitless Potential | Your Guide to Success, Health, and Happiness | </h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹149</h3>
+                        <p><del>₹199</del> <span>  (75%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 p-2">
+                    <img src="https://m.media-amazon.com/images/I/51KRAs6oikL._SY445_SX342_.jpg" class="card-img-top" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"> Brandy Hardcover – 26 August 2010</h5>
+                        <p class="star-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </p>
+                        <h3>₹508</h3>
+                        <p><del>₹989</del> <span>  (79%off)</span></p>
+                        <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+                    </div>
+                    <div class="card-footer text-muted">Updated 5 days ago</div>
+                </div>
+            </div>
+  <br><br><br>
+  <div class="col">
+    <div class="card h-100 p-2">
+        <img src="https://m.media-amazon.com/images/I/51EIc57chuL._SX342_SY445_.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">The Kalki Trilogy (Set of 3 Books) - Avatar of Vishnu</h5>
+            <p class="star-rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </p>
+            <h3>₹728</h3>
+            <p><del>₹999</del> <span>  (29%off)</span></p>
+            <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+        </div>
+        <div class="card-footer text-muted">Updated 5 days ago</div>
+    </div>
+</div>
+<div class="col">
+    <div class="card h-100 p-2">
+        <img src="https://m.media-amazon.com/images/I/818xDcUv8xL._SL1500_.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">The Hidden Hindu Book 3</h5>
+            <p class="star-rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </p>
+            <h3>₹206</h3>
+            <p><del>₹299</del> <span>  (30%off)</span></p>
+            <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+        </div>
+        <div class="card-footer text-muted">Updated 5 days ago</div>
+    </div>
+</div>
+<div class="col">
+    <div class="card h-100 p-2">
+        <img src="https://m.media-amazon.com/images/I/81uuRw6SbWL._SL1500_.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">The Hidden Hindu Boxset: The Complete Trilogy</h5>
+            <p class="star-rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </p>
+            <h3>₹406</h3>
+            <p><del>₹799</del> <span>  (62%off)</span></p>
+            <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+        </div>
+        <div class="card-footer text-muted">Updated 5 days ago</div>
+    </div>
+</div>
+<div class="col">
+    <div class="card h-100 p-2">
+        <img src="https://m.media-amazon.com/images/I/51+60uYdUTL._SX342_SY445_.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Saat Chiranjeevi: The 7 Immortals — Hanuman </h5>
+            <p class="star-rating">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </p>
+            <h3>₹164</h3>
+            <p><del>₹250</del> <span>  (39%off)</span></p>
+            <a href="{{url_for('allbooks')}}" class="btn btn-sm btn-primary mt-auto">Read More</a>
+        </div>
+        <div class="card-footer text-muted">Updated 5 days ago</div>
+    </div>
+</div>
+         
+</div>
+        
+</div>
+<br><br><br>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-content">
+            <h3>Online Book Store</h3>
+            <p>Your go-to destination for discovering the best books across genres.</p>
+        </div>
+
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Online Book Store. All Rights Reserved.</p>
+    </div>
+</footer>
+ 
+    
+<script>
+    function searchFunction() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let cards = document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+            let title = card.querySelector(".card-title").textContent.toLowerCase();
+            if (title.includes(input)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+</script>
+    
+</body>
+</html>
